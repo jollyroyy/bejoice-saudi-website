@@ -35,9 +35,13 @@
   <!-- Parallax Wrapper -->
   <main class="parallax-container">
 
-    <!-- Section 1: Hero (Sea Freight) -->
     <section class="parallax-section" id="home">
-      <div class="parallax-bg bg-shipping-night"></div>
+      <div class="video-background-wrapper">
+        <video autoplay muted loop playsinline id="hero-video">
+          <source src="/hero-ship-bg.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+      </div>
       <div class="content hero-content">
         <h1 class="fade-in-up">Elevating Global Logistics in Saudi Arabia</h1>
         <p class="fade-in-up delay-1">Seamless. Secure. Swift. The premier freight forwarding partner for Saudi
@@ -48,7 +52,12 @@
 
     <!-- Section 2: Services Overview -->
     <section class="parallax-section" id="services">
-      <div class="parallax-bg bg-air-night"></div>
+      <div class="video-background-wrapper">
+        <video autoplay muted loop playsinline class="bg-video">
+          <source src="/services-ship-bg.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay services-overlay"></div>
+      </div>
       <div class="content">
         <h2 class="section-title">Strategic ROI-Based Logistics</h2>
         <p class="section-subtitle">Engineered to eliminate port delays, protect your margins, and ensure 100% Saudi
