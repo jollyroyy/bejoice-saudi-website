@@ -206,6 +206,27 @@ strong {
   transform: translateY(-5px);
 }
 
+.icon-wrapper {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+.premium-icon {
+  color: #cba864;
+  /* Golden base */
+  filter: drop-shadow(0 0 5px rgba(203, 168, 100, 0.3));
+  transition: all 0.3s ease;
+}
+
+.glass-panel:hover .premium-icon {
+  color: #fff;
+  filter: drop-shadow(0 0 10px rgba(203, 168, 100, 0.6));
+  transform: scale(1.1);
+}
+
 /* Base structural layout for content */
 .container {
   max-width: 1200px;
