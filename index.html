@@ -11,12 +11,15 @@
   <link rel="apple-touch-icon" sizes="192x192" href="/favicon-192.png" />
   <!-- Elegant premium fonts -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Cinzel:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700;900&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="/src/style.css" />
 </head>
 
 <body>
+  <!-- Grain Overlay -->
+  <div class="grain-overlay"></div>
+
   <!-- Navbar -->
   <nav class="navbar">
     <a href="#home" class="logo" aria-label="Go to Home">
@@ -24,11 +27,25 @@
       <span class="logo-text">BeJoice Saudi</span>
     </a>
     <div class="nav-links">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#usp">Why Us</a>
-      <a href="#contact" class="btn-primary">Get a Quote</a>
+      <a href="#services" data-i18n="nav-services">Services</a>
+      <a href="#usp" data-i18n="nav-network">Network</a>
+      <a href="#tracking" data-i18n="nav-tracking">Tracking</a>
+      <a href="#about" data-i18n="nav-about">About Us</a>
+
+      <!-- EN / AR language selector -->
+      <div class="lang-switcher">
+        <button class="lang-btn lang-active" id="lang-en">
+          <img src="https://flagcdn.com/w20/gb.png" alt="English flag" class="lang-flag-img" />
+          EN
+        </button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" id="lang-ar">
+          <img src="https://flagcdn.com/w20/sa.png" alt="Arabic flag" class="lang-flag-img" />
+          AR
+        </button>
+      </div>
+
+      <button class="btn-primary" data-i18n="nav-cta" onclick="openQuoteModal()">Get an Instant Quote</button>
     </div>
   </nav>
 
@@ -43,10 +60,43 @@
         <div class="video-overlay"></div>
       </div>
       <div class="content hero-content">
-        <h1 class="fade-in-up">Elevating Global Logistics in Saudi Arabia</h1>
-        <p class="fade-in-up delay-1">Seamless. Secure. Swift. The premier freight forwarding partner for Saudi
-          Importers and Exporters.</p>
-        <a href="#services" class="btn-primary fade-in-up delay-2">Explore Our Solutions</a>
+        <div class="hero-badge fade-in-up">
+          <span class="hero-badge-dot"></span>
+          <span data-i18n="hero-badge">Vision 2030 Ready Logistics</span>
+        </div>
+        <h1 class="fade-in-up delay-1"><span data-i18n="hero-h1-1">SEAMLESS CUSTOMS</span><br><span class="hero-h1-gradient" data-i18n="hero-h1-2">ZERO DELAYS</span></h1>
+        <p class="fade-in-up delay-2" data-i18n="hero-subtitle">Seamless. Secure. Swift. The premier freight forwarding partner for Saudi Importers and Exporters.</p>
+        <div class="hero-cta-group fade-in-up delay-3">
+          <button class="btn-primary" data-i18n="hero-cta-1" onclick="openQuoteModal()">Get an Instant Quote &rarr;</button>
+          <a href="#tracking" class="btn-secondary" data-i18n="hero-cta-2">&#128269; Track a Shipment</a>
+        </div>
+      </div>
+
+      <!-- Metrics pinned to bottom of hero — floats over the video, no background -->
+      <div class="metrics-strip">
+        <div class="container">
+          <div class="metrics-grid">
+            <div class="metric-item">
+              <span class="counter-number metric-number" data-target="5000" data-suffix="+">0</span>
+              <span class="metric-label" data-i18n="metric-1">Deliveries Across the Globe</span>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-item">
+              <span class="counter-number metric-number" data-target="127" data-suffix="+">0</span>
+              <span class="metric-label" data-i18n="metric-2">Countries — Global Presence</span>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-item">
+              <span class="counter-number metric-number" data-target="25" data-suffix="+">0</span>
+              <span class="metric-label" data-i18n="metric-3">Years of Excellence</span>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-item">
+              <span class="counter-number metric-number" data-target="200" data-suffix="+">0</span>
+              <span class="metric-label" data-i18n="metric-4">Trusted Partners</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -59,9 +109,8 @@
         <div class="video-overlay services-overlay"></div>
       </div>
       <div class="content">
-        <h2 class="section-title">Strategic ROI-Based Logistics</h2>
-        <p class="section-subtitle">Engineered to eliminate port delays, protect your margins, and ensure 100% Saudi
-          customs compliance.</p>
+        <h2 class="section-title" data-i18n="services-h2">Strategic ROI-Based Logistics</h2>
+        <p class="section-subtitle" data-i18n="services-sub">Engineered to eliminate port delays, protect your margins, and ensure 100% Saudi customs compliance.</p>
 
         <div class="services-grid">
           <div class="service-card glass-panel reveal">
@@ -73,9 +122,8 @@
                 <path d="M22 10.16 19.5 20H4.5L2 10.16h11.5" />
               </svg>
             </div>
-            <h3>Ocean Freight ROI</h3>
-            <p>Maximized container efficiency and aggressive demurrage mitigation to protect your bottom line on
-              long-haul routes.</p>
+            <h3 data-i18n="svc-1-h">Ocean Freight ROI</h3>
+            <p data-i18n="svc-1-p">Maximized container efficiency and aggressive demurrage mitigation to protect your bottom line on long-haul routes.</p>
           </div>
 
           <div class="service-card glass-panel reveal">
@@ -86,9 +134,8 @@
                   d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.3c.4-.2.6-.6.5-1.1z" />
               </svg>
             </div>
-            <h3>Expedited Air Cargo</h3>
-            <p>When every hour of delay equals lost revenue. High-priority logistics for time-sensitive, high-value
-              inventory.</p>
+            <h3 data-i18n="svc-2-h">Expedited Air Cargo</h3>
+            <p data-i18n="svc-2-p">When every hour of delay equals lost revenue. High-priority logistics for time-sensitive, high-value inventory.</p>
           </div>
 
           <div class="service-card glass-panel reveal">
@@ -101,9 +148,8 @@
                 <circle cx="18.5" cy="18.5" r="2.5" />
               </svg>
             </div>
-            <h3>Border-Safe Land Transport</h3>
-            <p>Swift GCC border crossings with pre-clearance documentation to ensure your loads never get stuck at the
-              frontier.</p>
+            <h3 data-i18n="svc-3-h">Border-Safe Land Transport</h3>
+            <p data-i18n="svc-3-p">Swift GCC border crossings with pre-clearance documentation to ensure your loads never get stuck at the frontier.</p>
           </div>
 
           <div class="service-card glass-panel reveal">
@@ -119,9 +165,8 @@
                 <path d="M15 17.5h7" />
               </svg>
             </div>
-            <h3>Asset Protection & Project Cargo</h3>
-            <p>High-stakes handling of oversized capital equipment. We mitigate technical risks to ensure zero downtime
-              for your infrastructure projects.</p>
+            <h3 data-i18n="svc-4-h">Asset Protection & Project Cargo</h3>
+            <p data-i18n="svc-4-p">High-stakes handling of oversized capital equipment. We mitigate technical risks to ensure zero downtime for your infrastructure projects.</p>
           </div>
 
           <div class="service-card glass-panel reveal">
@@ -133,9 +178,8 @@
                   d="M18 10V3a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v18a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-3" />
               </svg>
             </div>
-            <h3>Smart Inventory & 3PL</h3>
-            <p>Reduce carrying costs through strategic warehousing. Real-time inventory control designed to prevent
-              stock-outs and excess capital tie-up.</p>
+            <h3 data-i18n="svc-5-h">Smart Inventory & 3PL</h3>
+            <p data-i18n="svc-5-p">Reduce carrying costs through strategic warehousing. Real-time inventory control designed to prevent stock-outs and excess capital tie-up.</p>
           </div>
 
           <div class="service-card glass-panel reveal">
@@ -147,9 +191,8 @@
                   d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1Z" />
               </svg>
             </div>
-            <h3>Supply Chain Profitability</h3>
-            <p>Identifying hidden inefficiencies. We re-engineer your supply chain to maximize liquidity and competitive
-              advantage in the Saudi market.</p>
+            <h3 data-i18n="svc-6-h">Supply Chain Profitability</h3>
+            <p data-i18n="svc-6-p">Identifying hidden inefficiencies. We re-engineer your supply chain to maximize liquidity and competitive advantage in the Saudi market.</p>
           </div>
 
           <div class="service-card glass-panel reveal">
@@ -160,9 +203,8 @@
                 <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 5v16" />
               </svg>
             </div>
-            <h3>Exhibition ROI & Event Velocity</h3>
-            <p>Flawless execution for high-pressure Saudi trade events. We ensure your displays and inventory are
-              port-cleared and floor-ready before your competitors.</p>
+            <h3 data-i18n="svc-7-h">Exhibition ROI & Event Velocity</h3>
+            <p data-i18n="svc-7-p">Flawless execution for high-pressure Saudi trade events. We ensure your displays and inventory are port-cleared and floor-ready before your competitors.</p>
           </div>
 
           <div class="service-card glass-panel reveal">
@@ -172,9 +214,8 @@
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
               </svg>
             </div>
-            <h3>Customs Clearance Velocity</h3>
-            <p>Expert handling of Saudi KSA regulations to ensure immediate cargo release. We bypass typical port
-              bottlenecks and eliminate hidden detention costs.</p>
+            <h3 data-i18n="svc-8-h">Customs Clearance Velocity</h3>
+            <p data-i18n="svc-8-p">Expert handling of Saudi KSA regulations to ensure immediate cargo release. We bypass typical port bottlenecks and eliminate hidden detention costs.</p>
           </div>
 
           <div class="service-card glass-panel reveal">
@@ -185,9 +226,8 @@
                 <path d="M7 11V7a5 5 0 0 1 10 0v4" />
               </svg>
             </div>
-            <h3>Capital Protection Strategy</h3>
-            <p>Comprehensive risk-mitigation for high-value merchandise. Protecting your capital investments against
-              transit uncertainty.</p>
+            <h3 data-i18n="svc-9-h">Capital Protection Strategy</h3>
+            <p data-i18n="svc-9-p">Comprehensive risk-mitigation for high-value merchandise. Protecting your capital investments against transit uncertainty.</p>
           </div>
 
           <div class="service-card glass-panel reveal">
@@ -198,9 +238,8 @@
                 <path d="m9 12 2 2 4-4" />
               </svg>
             </div>
-            <h3>Strategic Compliance Advisory</h3>
-            <p>Mitigate regulatory risk with proactive guidance on Saudi trade laws. Future-proof your supply chain
-              against ever-changing KSA imports standards.</p>
+            <h3 data-i18n="svc-10-h">Strategic Compliance Advisory</h3>
+            <p data-i18n="svc-10-p">Mitigate regulatory risk with proactive guidance on Saudi trade laws. Future-proof your supply chain against ever-changing KSA imports standards.</p>
           </div>
 
           <div class="service-card glass-panel reveal">
@@ -212,9 +251,8 @@
                 <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
               </svg>
             </div>
-            <h3>Agile Ocean Capacity (NVOCC)</h3>
-            <p>Flexible maritime solutions providing consistent carrier space and predictable pricing, even during
-              global supply chain volatility.</p>
+            <h3 data-i18n="svc-11-h">Agile Ocean Capacity (NVOCC)</h3>
+            <p data-i18n="svc-11-p">Flexible maritime solutions providing consistent carrier space and predictable pricing, even during global supply chain volatility.</p>
           </div>
 
           <div class="service-card glass-panel reveal">
@@ -225,9 +263,8 @@
                 <path d="M7 11V7a5 5 0 0 1 10 0v4" />
               </svg>
             </div>
-            <h3>Container Asset Trading</h3>
-            <p>Liquidate or acquire maritime hardware with confidence. High-spec container trading to match your
-              operational or storage requirements.</p>
+            <h3 data-i18n="svc-12-h">Container Asset Trading</h3>
+            <p data-i18n="svc-12-p">Liquidate or acquire maritime hardware with confidence. High-spec container trading to match your operational or storage requirements.</p>
           </div>
         </div>
       </div>
@@ -236,8 +273,9 @@
     <!-- Testimonials Section -->
     <section class="testimonials-section">
       <div class="container text-center">
-        <h2 class="section-title reveal">Trusted by Global Leaders</h2>
-        <p class="section-subtitle reveal">Our clients represent the pinnacle of global trade and manufacturing.</p>
+        <div class="section-badge reveal" data-i18n="testimonials-badge">Client Success</div>
+        <h2 class="section-title reveal" data-i18n="testimonials-h2">Trusted by Industry Leaders</h2>
+        <p class="section-subtitle reveal" data-i18n="testimonials-sub">Our clients represent the pinnacle of global trade and manufacturing.</p>
       </div>
 
       <!-- Moving left -->
@@ -331,58 +369,241 @@
             </svg> MAPEI</div>
         </div>
       </div>
+
+      <!-- Testimonial Cards -->
+      <div class="testimonials-cards">
+        <div class="testimonial-card reveal">
+          <svg class="testimonial-quote-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.293-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.293-3.996 5.849h3.983v10h-9.983z"/>
+          </svg>
+          <p class="testimonial-text" data-i18n="t1-quote">"BeJoice cleared our cargo in Jeddah 3 days faster than our previous forwarder. Their ZATCA expertise is unmatched."</p>
+          <div class="testimonial-author-row">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop" alt="Ahmed Al-Farsi" class="testimonial-avatar" referrerpolicy="no-referrer" />
+            <div>
+              <div class="testimonial-author-name" data-i18n="t1-name">Ahmed Al-Farsi</div>
+              <div class="testimonial-author-role" data-i18n="t1-role">Logistics Manager, TechCorp KSA</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal">
+          <svg class="testimonial-quote-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.293-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.293-3.996 5.849h3.983v10h-9.983z"/>
+          </svg>
+          <p class="testimonial-text" data-i18n="t2-quote">"We stopped overpaying for empty space. Their ocean freight consolidation saved us 18% on shipping costs this quarter alone."</p>
+          <div class="testimonial-author-row">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop" alt="Sarah Jenkins" class="testimonial-avatar" referrerpolicy="no-referrer" />
+            <div>
+              <div class="testimonial-author-name" data-i18n="t2-name">Sarah Jenkins</div>
+              <div class="testimonial-author-role" data-i18n="t2-role">Procurement Director, Global Build</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal">
+          <svg class="testimonial-quote-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.293-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.293-3.996 5.849h3.983v10h-9.983z"/>
+          </svg>
+          <p class="testimonial-text" data-i18n="t3-quote">"When we have time-critical air freight for Vision 2030 projects, BeJoice is the only partner we trust to deliver on time."</p>
+          <div class="testimonial-author-row">
+            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=200&auto=format&fit=crop" alt="Khalid Bin Salman" class="testimonial-avatar" referrerpolicy="no-referrer" />
+            <div>
+              <div class="testimonial-author-name" data-i18n="t3-name">Khalid Bin Salman</div>
+              <div class="testimonial-author-role" data-i18n="t3-role">Operations Head, Future City Dev</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Section 3: Parallax (Land Freight) -->
-    <section class="parallax-section" id="usp">
-      <div class="parallax-bg bg-truck-night"></div>
-      <div class="content usp-content">
-        <div class="glass-panel large-panel reveal">
-          <h2>The BeJoice Compliance Edge</h2>
-          <p>We don't just ship cargo; we eliminate the regulatory friction that kills your profit. Target pain points
-            before they hit your balance sheet.</p>
-          <ul class="usp-list">
-            <li><span class="gold-accent">✓</span> <strong>Zero-Delay Customs Strategy:</strong> Pre-audit compliance
-              for Riyadh & Jeddah.</li>
-            <li><span class="gold-accent">✓</span> <strong>Port Bottleneck Mitigation:</strong> Real-time redirection to
-              avoid detention fees.</li>
-            <li><span class="gold-accent">✓</span> <strong>Transparent ROI Tracking:</strong> Every shipment mapped to
-              your business goals.</li>
-            <li><span class="gold-accent">✓</span> <strong>Risk-Free GCC Logistics:</strong> Full liability protection
-              on every mile.</li>
-          </ul>
+    <section class="usp-section" id="usp">
+      <div class="usp-bg-glow"></div>
+      <div class="container usp-container">
+
+        <!-- Left: heading block -->
+        <div class="usp-left reveal">
+          <div class="section-badge" style="margin-bottom:1.4rem;">
+            <span class="hero-badge-dot"></span>
+            <span data-i18n="usp-badge">Compliance Edge</span>
+          </div>
+          <h2 class="usp-heading" data-i18n="usp-h2">The BeJoice<br><span class="usp-heading-gold">Compliance Edge</span></h2>
+          <p class="usp-sub" data-i18n="usp-p">We don't just ship cargo — we eliminate the regulatory friction that kills your profit. Targeting pain points before they hit your balance sheet.</p>
+          <div class="usp-divider"></div>
+          <p class="usp-tagline" data-i18n="usp-tagline">Trusted by 200+ Saudi businesses. Delivering certainty on every mile.</p>
         </div>
+
+        <!-- Right: feature cards grid -->
+        <div class="usp-right reveal">
+          <div class="usp-cards">
+
+            <div class="usp-card">
+              <div class="usp-card-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9S3 16.97 3 12 7.03 3 12 3s9 4.03 9 9z"/></svg>
+              </div>
+              <div>
+                <h4 data-i18n="usp-1-h">Zero-Delay Customs Strategy</h4>
+                <p data-i18n="usp-1-p">Pre-audit compliance for Riyadh &amp; Jeddah ports. No surprises at clearance.</p>
+              </div>
+            </div>
+
+            <div class="usp-card">
+              <div class="usp-card-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              </div>
+              <div>
+                <h4 data-i18n="usp-2-h">Port Bottleneck Mitigation</h4>
+                <p data-i18n="usp-2-p">Real-time redirection to avoid detention fees and port congestion delays.</p>
+              </div>
+            </div>
+
+            <div class="usp-card">
+              <div class="usp-card-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 21V9"/></svg>
+              </div>
+              <div>
+                <h4 data-i18n="usp-3-h">Transparent ROI Tracking</h4>
+                <p data-i18n="usp-3-p">Every shipment mapped to your business goals with real-time dashboards.</p>
+              </div>
+            </div>
+
+            <div class="usp-card">
+              <div class="usp-card-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <div>
+                <h4 data-i18n="usp-4-h">Risk-Free GCC Logistics</h4>
+                <p data-i18n="usp-4-p">Full liability protection and high-limit insurance on every cross-border mile.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section: Certifications & Accreditations -->
+    <section class="cert-section" id="certifications">
+      <div class="container">
+
+        <div class="cert-header reveal">
+          <div class="section-badge" style="margin-bottom:1.2rem;">
+            <span class="hero-badge-dot"></span>
+            <span data-i18n="cert-badge">Accredited & Certified</span>
+          </div>
+          <h2 class="section-title" data-i18n="cert-h2">Globally Recognised.<br>Saudi Compliant.</h2>
+          <p class="section-subtitle" data-i18n="cert-sub">Every certification we hold is a commitment — to precision, compliance, and the protection of your cargo.</p>
+        </div>
+
+        <div class="cert-grid">
+
+          <div class="cert-card reveal">
+            <div class="cert-icon-wrap cert-gold">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+            </div>
+            <div class="cert-body">
+              <div class="cert-tag" data-i18n="cert-1-tag">Saudi Authority</div>
+              <h3 data-i18n="cert-1-h">ZATCA Certified</h3>
+              <p data-i18n="cert-1-p">Fully registered and compliant with Zakat, Tax and Customs Authority regulations. All shipments cleared through Saudi ports with zero documentation risk.</p>
+            </div>
+            <div class="cert-badge-pill" data-i18n="cert-active">Active</div>
+          </div>
+
+          <div class="cert-card reveal">
+            <div class="cert-icon-wrap cert-blue">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+            </div>
+            <div class="cert-body">
+              <div class="cert-tag" data-i18n="cert-2-tag">Quality Management</div>
+              <h3 data-i18n="cert-2-h">ISO 9001:2015</h3>
+              <p data-i18n="cert-2-p">International standard for quality management systems — guaranteeing consistent, high-quality freight handling processes across every shipment we manage.</p>
+            </div>
+            <div class="cert-badge-pill" data-i18n="cert-active">Active</div>
+          </div>
+
+          <div class="cert-card reveal">
+            <div class="cert-icon-wrap cert-green">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+            </div>
+            <div class="cert-body">
+              <div class="cert-tag" data-i18n="cert-3-tag">Freight Forwarders</div>
+              <h3 data-i18n="cert-3-h">FIATA Member</h3>
+              <p data-i18n="cert-3-p">Accredited member of the International Federation of Freight Forwarders Associations — the global body representing 40,000+ freight forwarding companies.</p>
+            </div>
+            <div class="cert-badge-pill" data-i18n="cert-active">Active</div>
+          </div>
+
+          <div class="cert-card reveal">
+            <div class="cert-icon-wrap cert-purple">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.16 12 19.79 19.79 0 0 1 1.08 3.38 2 2 0 0 1 3.06 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg>
+            </div>
+            <div class="cert-body">
+              <div class="cert-tag" data-i18n="cert-4-tag">Air Cargo</div>
+              <h3 data-i18n="cert-4-h">IATA Accredited</h3>
+              <p data-i18n="cert-4-p">Recognised by the International Air Transport Association for air freight handling — enabling direct bookings with 290+ airlines and priority cargo processing.</p>
+            </div>
+            <div class="cert-badge-pill" data-i18n="cert-active">Active</div>
+          </div>
+
+          <div class="cert-card reveal">
+            <div class="cert-icon-wrap cert-teal">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            </div>
+            <div class="cert-body">
+              <div class="cert-tag" data-i18n="cert-5-tag">Customs Security</div>
+              <h3 data-i18n="cert-5-h">AEO Authorised</h3>
+              <p data-i18n="cert-5-p">Authorised Economic Operator status — the gold standard in global supply chain security. Fewer inspections, faster border clearance, priority treatment at all GCC ports.</p>
+            </div>
+            <div class="cert-badge-pill" data-i18n="cert-active">Active</div>
+          </div>
+
+          <div class="cert-card reveal">
+            <div class="cert-icon-wrap cert-gold">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <div class="cert-body">
+              <div class="cert-tag" data-i18n="cert-6-tag">Saudi Standards</div>
+              <h3 data-i18n="cert-6-h">SASO Compliant</h3>
+              <p data-i18n="cert-6-p">Full compliance with Saudi Standards, Metrology and Quality Organization — ensuring all goods meet Kingdom import requirements and technical regulations.</p>
+            </div>
+            <div class="cert-badge-pill" data-i18n="cert-active">Active</div>
+          </div>
+
+        </div>
+
+        <!-- Trust bar -->
+        <div class="cert-trust-bar reveal">
+          <div class="cert-trust-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
+            <span data-i18n="cert-trust-1">100% Regulatory Compliant</span>
+          </div>
+          <div class="cert-trust-divider"></div>
+          <div class="cert-trust-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
+            <span data-i18n="cert-trust-2">Audited Annually</span>
+          </div>
+          <div class="cert-trust-divider"></div>
+          <div class="cert-trust-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
+            <span data-i18n="cert-trust-3">Vision 2030 Aligned</span>
+          </div>
+          <div class="cert-trust-divider"></div>
+          <div class="cert-trust-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
+            <span data-i18n="cert-trust-4">GCC-Wide Coverage</span>
+          </div>
+        </div>
+
       </div>
     </section>
 
     <!-- Section: About Us -->
     <section class="content-section about-section" id="about">
       <div class="container">
-        <h2 class="section-title reveal">Where Logistics Meets Profitability</h2>
-        <p class="section-subtitle reveal" style="max-width: 800px; margin: 0 auto 3rem;">
-          Bejoice Shipping is a fast-growing International Freight Forwarding service provider.
-          Globally, the organization provides its clients with international shipping and logistic solutions.
-          Bejoice stands for <strong>Seamless</strong> and <strong>Trustworthiness</strong> — We promise to deliver.
-        </p>
+        <h2 class="section-title reveal" data-i18n="about-h2">Where Logistics Meets Profitability</h2>
+        <p class="section-subtitle reveal" data-i18n="about-p" style="max-width: 800px; margin: 0 auto 3rem;">Bejoice Shipping is a fast-growing International Freight Forwarding service provider. Globally, the organization provides its clients with international shipping and logistic solutions. Bejoice stands for Seamless and Trustworthiness — We promise to deliver.</p>
 
-        <div class="about-stats reveal">
-          <div class="stat-card glass-panel">
-            <span class="counter-number" data-target="5000" data-suffix="+">0</span>
-            <span class="stat-label">Deliveries Across the Globe</span>
-          </div>
-          <div class="stat-card glass-panel">
-            <span class="counter-number" data-target="127" data-suffix="+">0</span>
-            <span class="stat-label">Countries — Global Presence</span>
-          </div>
-          <div class="stat-card glass-panel">
-            <span class="counter-number" data-target="25" data-suffix="+">0</span>
-            <span class="stat-label">Years of Excellence</span>
-          </div>
-          <div class="stat-card glass-panel">
-            <span class="counter-number" data-target="200" data-suffix="+">0</span>
-            <span class="stat-label">Trusted Partners</span>
-          </div>
-        </div>
 
         <div class="about-specialties reveal" style="margin-top: 3rem;">
           <div class="specialty-item glass-panel">
@@ -393,9 +614,8 @@
                 <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
               </svg>
             </span>
-            <h3>Saudi Market Expertise</h3>
-            <p>Localized knowledge that bypasses regulatory hurdles and ensures compliance with Vision 2030 standards.
-            </p>
+            <h3 data-i18n="spec-1-h">Saudi Market Expertise</h3>
+            <p data-i18n="spec-1-p">Localized knowledge that bypasses regulatory hurdles and ensures compliance with Vision 2030 standards.</p>
           </div>
           <div class="specialty-item glass-panel">
             <span class="specialty-icon">
@@ -405,9 +625,8 @@
                 <path d="M12 6v6l4 2" />
               </svg>
             </span>
-            <h3>No-Delay Commitment</h3>
-            <p>Our infrastructure is built to avoid port bottlenecks, saving you up to 30% in hidden operational costs.
-            </p>
+            <h3 data-i18n="spec-2-h">No-Delay Commitment</h3>
+            <p data-i18n="spec-2-p">Our infrastructure is built to avoid port bottlenecks, saving you up to 30% in hidden operational costs.</p>
           </div>
           <div class="specialty-item glass-panel">
             <span class="specialty-icon">
@@ -419,9 +638,8 @@
                 <line x1="12" y1="22.08" x2="12" y2="12" />
               </svg>
             </span>
-            <h3>Asset Protection</h3>
-            <p>End-to-end security and high-limit insurance that safeguards your capital investments across all borders.
-            </p>
+            <h3 data-i18n="spec-3-h">Asset Protection</h3>
+            <p data-i18n="spec-3-p">End-to-end security and high-limit insurance that safeguards your capital investments across all borders.</p>
           </div>
         </div>
       </div>
@@ -431,19 +649,61 @@
     <section class="parallax-section parallax-auto-height" id="contact">
       <div class="parallax-bg bg-containers-day"></div>
       <div class="content contact-content">
-        <h2 class="reveal contact-heading">Ready to optimize your supply chain?</h2>
-        <p class="reveal contact-subheading">Join the leading Saudi trading enterprises that trust BeJoice.</p>
+        <h2 class="reveal contact-heading" data-i18n="contact-h2">Ready to optimize your supply chain?</h2>
+        <p class="reveal contact-subheading" data-i18n="contact-sub">Join the leading Saudi trading enterprises that trust BeJoice.</p>
         <form class="contact-form contact-form-premium reveal">
-          <input type="text" placeholder="Your Name" required />
-          <input type="email" placeholder="Business Email" required />
-          <input type="text" placeholder="Company Name" required />
-          <textarea placeholder="Tell us about your freight requirements..." rows="4" required></textarea>
-          <button type="submit" class="btn-primary w-full">Request Tailored Proposal</button>
+          <input type="text" data-i18n-placeholder="contact-name" placeholder="Your Name" required />
+          <input type="email" data-i18n-placeholder="contact-email" placeholder="Business Email" required />
+          <input type="text" data-i18n-placeholder="contact-company" placeholder="Company Name" required />
+          <textarea data-i18n-placeholder="contact-message" placeholder="Tell us about your freight requirements..." rows="4" required></textarea>
+          <button type="submit" class="btn-primary w-full" data-i18n="contact-btn">Request Tailored Proposal</button>
         </form>
       </div>
     </section>
 
   </main>
+
+  <!-- Tracking Widget Section -->
+  <section id="tracking" class="tracking-section">
+    <div class="container">
+      <div class="tracking-card glass-panel">
+        <div class="tracking-icon-ring">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round" class="premium-icon">
+            <path d="M21 10c0-5.523-4.477-10-10-10S1 4.477 1 10c0 3.528 1.835 6.622 4.596 8.41" />
+            <circle cx="10" cy="10" r="6" />
+            <path d="M10 7v3l2 2" />
+            <path d="M21 21l-4.35-4.35" />
+          </svg>
+        </div>
+        <div class="tracking-body">
+          <h3 data-i18n="tracking-h3">Track Your Shipment</h3>
+          <p data-i18n="tracking-p">Enter your Bill of Lading (BOL) or Container Number for real-time status updates and ZATCA clearance
+            progress.</p>
+          <form id="tracking-form" class="tracking-form">
+            <div class="tracking-input-wrap">
+              <svg class="tracking-search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+              <input type="text" id="tracking-input" data-i18n-placeholder="tracking-placeholder" placeholder="Enter BOL or Container Number..." />
+            </div>
+            <button type="submit" class="btn-primary" data-i18n="tracking-btn">Track Status</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WhatsApp Widget -->
+  <a href="https://wa.me/971437050920" target="_blank" rel="noopener noreferrer" class="whatsapp-widget"
+    aria-label="Chat on WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+    </svg>
+  </a>
 
   <!-- Footer Section -->
   <footer class="site-footer">
@@ -453,23 +713,23 @@
           <img src="/logo.png" alt="BeJoice Saudi" class="brand-logo footer-logo" />
           <span class="logo-text">BEJOICE SAUDI</span>
         </div>
-        <p style="margin-top: 1rem; color: #cbd5e0; line-height: 1.6;">The ROI-driven logistics partner for Saudi
+        <p style="margin-top: 1rem; color: #cbd5e0; line-height: 1.6;" data-i18n="footer-brand-p">The ROI-driven logistics partner for Saudi
           Importers and Exporters. We eliminate port bottlenecks and regulatory delays to safeguard your profit margins.
         </p>
       </div>
 
       <div class="footer-col links-col">
-        <h4 class="footer-heading">Links</h4>
+        <h4 class="footer-heading" data-i18n="footer-links-h">Links</h4>
         <ul class="footer-links">
-          <li><a href="#">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Gallery / Services</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#" data-i18n="footer-link-home">Home</a></li>
+          <li><a href="#about" data-i18n="footer-link-about">About</a></li>
+          <li><a href="#services" data-i18n="footer-link-services">Gallery / Services</a></li>
+          <li><a href="#contact" data-i18n="footer-link-contact">Contact</a></li>
         </ul>
       </div>
 
       <div class="footer-col contact-col">
-        <h4 class="footer-heading">Office</h4>
+        <h4 class="footer-heading" data-i18n="footer-office-h">Office</h4>
         <p>M-01, RHS Building<br>Khalid Bin Al Waleed Road<br>Dubai, UAE</p>
         <a href="mailto:info@bejoiceshipping.com" class="footer-link-highlight">info@bejoiceshipping.com</a>
         <a href="tel:+97143705092" class="footer-link-highlight prompt-phone">+971 4 370 5092</a>
@@ -479,6 +739,130 @@
       <p>&copy; 2026 BeJoice Group of Companies. All rights reserved.</p>
     </div>
   </footer>
+
+  <!-- Quote Modal -->
+  <div class="quote-modal-overlay" id="quote-modal-overlay" role="dialog" aria-modal="true" aria-label="Get an Instant Quote">
+    <div class="quote-modal" id="quote-modal">
+      <button class="quote-modal-close" id="quote-modal-close" aria-label="Close">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <!-- Progress Bar (hidden on step 5) -->
+      <div class="quote-progress-bar" id="quote-progress-bar">
+        <div class="quote-progress-labels">
+          <span id="quote-step-label">Step 1 of 4</span>
+          <span id="quote-step-pct">25%</span>
+        </div>
+        <div class="quote-progress-track">
+          <div class="quote-progress-fill" id="quote-progress-fill" style="width:25%"></div>
+        </div>
+      </div>
+
+      <!-- Step 1: Cargo Type -->
+      <div class="quote-step active" id="qstep-1">
+        <div class="quote-step-title">What are you shipping?</div>
+        <div class="quote-options-grid">
+          <button class="quote-option-btn" data-value="containers" onclick="selectOption(this,'shippingType')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="22" height="12" rx="2"/><path d="M1 12h22M8 6v12M16 6v12"/></svg>
+            Containers (FCL)
+          </button>
+          <button class="quote-option-btn" data-value="pallets" onclick="selectOption(this,'shippingType')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14M5 12h14M5 16h14M3 20h18M3 4h18"/></svg>
+            Pallets (LCL)
+          </button>
+          <button class="quote-option-btn" data-value="project" onclick="selectOption(this,'shippingType')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+            Project Cargo
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 2: Transport Mode -->
+      <div class="quote-step" id="qstep-2">
+        <div class="quote-step-title">Mode of Transport?</div>
+        <div class="quote-options-grid">
+          <button class="quote-option-btn" data-value="sea" onclick="selectOption(this,'transportMode')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 21c.6.5 1.2 1 2.5 1C7 22 7 20 9.5 20s2.5 2 5 2 2.5-2 5-2c1.3 0 1.9.5 2.5 1"/><path d="M19.38 20A11.6 11.6 0 0 0 21 14l-9-4-9 4c0 2.9.94 5.34 2.61 7.44"/><path d="M19 13V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v6"/><path d="M12 10v4"/><path d="M12 2v3"/></svg>
+            Sea Freight
+          </button>
+          <button class="quote-option-btn" data-value="air" onclick="selectOption(this,'transportMode')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.3c.4-.2.6-.6.5-1.1z"/></svg>
+            Air Freight
+          </button>
+          <button class="quote-option-btn" data-value="land" onclick="selectOption(this,'transportMode')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            Land Transport
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 3: Route & Dimensions -->
+      <div class="quote-step" id="qstep-3">
+        <div class="quote-step-title">Origin &amp; Destination</div>
+        <div class="quote-fields-grid">
+          <div class="quote-field-group">
+            <label>Origin City / Port</label>
+            <input type="text" class="quote-input" id="q-origin" placeholder="e.g. Shanghai, China" />
+          </div>
+          <div class="quote-field-group">
+            <label>Destination City / Port</label>
+            <input type="text" class="quote-input" id="q-destination" placeholder="e.g. Jeddah, KSA" />
+          </div>
+          <div class="quote-field-group">
+            <label>Total Weight (KG)</label>
+            <input type="number" class="quote-input" id="q-weight" placeholder="e.g. 5000" />
+          </div>
+          <div class="quote-field-group">
+            <label>Total Volume (CBM)</label>
+            <input type="number" class="quote-input" id="q-volume" placeholder="e.g. 15" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4: Contact Info -->
+      <div class="quote-step" id="qstep-4">
+        <div class="quote-step-title">Your Contact Info</div>
+        <div style="display:flex;flex-direction:column;gap:1rem;">
+          <div class="quote-field-group">
+            <label>Full Name</label>
+            <input type="text" class="quote-input" id="q-name" placeholder="John Doe" />
+          </div>
+          <div class="quote-field-group">
+            <label>Email Address</label>
+            <input type="email" class="quote-input" id="q-email" placeholder="john@company.com" />
+          </div>
+          <div class="quote-field-group">
+            <label>Phone Number</label>
+            <input type="tel" class="quote-input" id="q-phone" placeholder="+966 5X XXX XXXX" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 5: Success -->
+      <div class="quote-step" id="qstep-5">
+        <div class="quote-success">
+          <div class="quote-success-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#c5a059" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div class="quote-success-title">Quote Requested!</div>
+          <p class="quote-success-text">Our Riyadh team will review your requirements and send a custom quote to your email within 2 hours.</p>
+          <button class="btn-primary" onclick="closeQuoteModal()">Done</button>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="quote-modal-nav" id="quote-modal-nav">
+        <button class="quote-nav-back invisible" id="quote-nav-back" onclick="quoteBack()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          Back
+        </button>
+        <button class="quote-nav-next" id="quote-nav-next" onclick="quoteNext()">
+          Next
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
 
   <script type="module" src="/src/main.js"></script>
 </body>
